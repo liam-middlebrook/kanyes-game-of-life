@@ -10,10 +10,11 @@ using namespace MINX::Graphics;
 
 bool* map;
 TextureBatch* texBatch;
+Texture2D* kanye;
 const int tileWidth = 16, tileHeight = 16;
 
 double elapsedTime = 0.0;
-double timeLimit = 0.5;
+double timeLimit = 2.0;
 
 
 bool* updateCells(bool* board, int width, int height);
@@ -23,7 +24,7 @@ GameOfLife::GameOfLife() : Game()
 {
 	//This is the constructor. Put stuff here that should happen when the Game is created.
 	srand(time(NULL));
-	Game::SetVideoOptions(640, 480, false, "kanye\'s-game-of-life");
+	Game::SetVideoOptions(640, 480, true, "kanye\'s-game-of-life");
 }
 
 void GameOfLife::Initialize()
@@ -45,12 +46,14 @@ void GameOfLife::Initialize()
 	Game::Initialize();
 
 	texBatch = new TextureBatch(ShaderFactory::GetInstance()->GetShaderAtIndex(0));
+
 }
 
 void GameOfLife::LoadContent()
 {
 	//Put stuff here that loads content for your game.
 	Game::LoadContent();
+	kanye = new Texture2D("../content/kanye.png");
 }
 
 void GameOfLife::UnloadContent()
@@ -87,6 +90,7 @@ void GameOfLife::Draw(GameTime * gameTime)
 	{
 		for(int x = 0; x < width; ++x)
 		{
+			/*
 			texBatch->DrawPrimitiveRectangle(
 				Rectangle(
 					x * tileWidth,
@@ -94,6 +98,8 @@ void GameOfLife::Draw(GameTime * gameTime)
 					tileWidth,
 					tileHeight),
 				map[y * width + x] ? Color::Black : Color::Salmon);
+			//*/
+			texBatch->Draw(kanye, x * tileWidth, y * tileHeight, tileWidth/64.0, tileHeight/64.0, 0, map[y * width + x] ? Color::White : Color::TransparentBlack );
 		}
 	}
 
