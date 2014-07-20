@@ -1,10 +1,10 @@
-#include "kaynesgameoflife.hpp"
+#include "kanyesgameoflife.hpp"
 #include <MINX/Graphics/Color.hpp>
 #include <MINX/Graphics/GameWindow.hpp>
 #include <MINX/Graphics/TextureBatch.hpp>
 #include <MINX/Graphics/ShaderFactory.hpp>
 
-using namespace KayneGameOfLife;
+using namespace KanyeGameOfLife;
 using namespace MINX;
 using namespace MINX::Graphics;
 
@@ -23,7 +23,7 @@ GameOfLife::GameOfLife() : Game()
 {
 	//This is the constructor. Put stuff here that should happen when the Game is created.
 	srand(time(NULL));
-	Game::SetVideoOptions(640, 480, false, "kaynes-game-of-life");
+	Game::SetVideoOptions(640, 480, false, "kanye\'s-game-of-life");
 }
 
 void GameOfLife::Initialize()
